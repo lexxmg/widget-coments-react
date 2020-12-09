@@ -1,9 +1,13 @@
 import './App.css';
+import Coment from './components/coment/Coment';
+import Form from './components/form/Form';
 
 function App(props) {
   return (
     <div className="wrapper fixed-container">
-      <h1>test</h1>
+      <Coment />
+
+      <Form />
     </div>
   );
 }
