@@ -7,10 +7,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.localStorage = JSON.parse(localStorage.getItem('state') );
+    this.local = JSON.parse(localStorage.getItem('state') );
 
-    if (this.localStorage) {
-      this.state = this.localStorage;
+    if (this.local) {
+      this.state = this.local;
     } else {
       this.state = {
         coments: [],
@@ -26,6 +26,7 @@ class App extends React.Component {
     this.newValueText = this.newValueText.bind(this);
     //this.deleteComent = this.deleteComent.bind(this);
     //console.log( this.localStorage );
+    //debugger;
   }
 
   addComent(e) {
@@ -45,12 +46,14 @@ class App extends React.Component {
       id: id
     };
     state.coments.push(newComent);
-    this.setState({ state });
+    
+    this.setState(state);
 
     state.form.valueInput = '';
     state.form.valueText = '';
 
-    localStorage.setItem('state', JSON.stringify(this.state));
+    localStorage.setItem( 'state', JSON.stringify(this.state) );
+    //debugger;
   }
 
   deleteComent(id) {
@@ -61,7 +64,7 @@ class App extends React.Component {
     });
     state.coments = newArr;
 
-    this.setState({ state });
+    this.setState(state);
 
     localStorage.setItem('state', JSON.stringify(this.state));
   }
@@ -70,14 +73,14 @@ class App extends React.Component {
     const state = this.state;
     state.form.valueInput = e.target.value;
 
-    this.setState({state});
+    this.setState(state);
   }
 
   newValueText(e) {
     const state = this.state;
     state.form.valueText = e.target.value;
 
-    this.setState({state});
+    this.setState(state);
   }
 
   render() {
