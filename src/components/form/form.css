@@ -1,5 +1,7 @@
 .form-wrapper {
 
+
+  margin: 100px 0 0 0;
 }
 
 .form-wrapper__form {
@@ -7,21 +9,80 @@
 }
 
 .form-wrapper__input-wrapper {
+  position: relative;
 
+  font-size: 20px;
 }
 
 .form-wrapper__input {
+  display: block;
 
+  width: 100%;
+  height: 40px;
+
+  padding: 0 10px;
+
+  background-color: white;
+
+  border: 1px solid #000;
+
+  border-radius: 5px;
+
+  outline: none;
+}
+
+.form-wrapper__input:focus + .form-wrapper__label {
+  top: -12px;
+
+  font-size: 16px;
+
+  transition: all .25s;
+}
+
+.form-wrapper__input:valid + .form-wrapper__label {
+  top: -12px;
+
+  font-size: 16px;
 }
 
 .form-wrapper__label {
+  position: absolute;
 
+  background-color: white;
+
+  top: 7px;
+  left: 20px;
+
+  transition: top .25s, font-size .25s;
 }
 
 .form-wrapper_text {
+  display: block;
 
+  width: 100%;
+  height: 100px;
+
+  padding: 10px;
+
+  margin: 10px 0 0 0;
+
+  border: 1px solid #000;
+
+  border-radius: 5px;
+
+  resize: none;
 }
 
 .form-wrapper__btn {
+  display: block;
 
+  margin: 10px 0 0 0;
+
+  width: 140px;
+  height: 40px;
+
+  background-color: transparent;
+
+  border: 1px solid #000;
+  border-radius: 5px;
 }

@@ -3,19 +3,19 @@ import './coment.css';
 const Coment = (props) => {
   return (
     <div className="coment">
-      <p className="coment__text">какойто комент</p>
+      <p className="coment__text">{props.text}</p>
 
       <div className="coment__name-inner">
-        <span className="coment__name">вася</span>
+        <span className="coment__name">{props.name}</span>
 
         <time className="coment__time-inner">
-          <span className="coment__time">12:00</span>
+          <span className="coment__time">{props.time}</span>
 
-          <span className="coment__date">12-07</span>
+          <span className="coment__date">{props.date}</span>
         </time>
-      </div>
 
-      <button className="coment__btn">удалить</button>
+        <button className="coment__btn" onClick={props.delete}>удалить</button>
+      </div>
     </div>
   );
 }

@@ -1,13 +1,27 @@
 .coment {
+  margin: 0 0 10px 0;
+  padding: 10px;
 
+  background-color: white;
+
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.coment:last-child {
+  margin: 0;
 }
 
 .coment__text {
+  width: 100%;
+  min-height: 100px;
 
 }
 
 .coment__name-inner {
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .coment__name {
@@ -23,9 +37,19 @@
 }
 
 .coment__date {
-
+  margin: 0 0 0 10px;
 }
 
 .coment__btn {
+  display: block;
 
+  margin: 10px 0 0 0;
+
+  width: 100px;
+  height: 30px;
+
+  background-color: transparent;
+
+  border: 1px solid #000;
+  border-radius: 5px;
 }
