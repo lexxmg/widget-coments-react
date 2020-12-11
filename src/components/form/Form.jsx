@@ -12,6 +12,8 @@ const Form = (props) => {
             value={props.valueInput}
             required/>
           <label htmlFor="userName" className="form-wrapper__label">Укажите имя</label>
+
+          <div className="form-wrapper__line"></div>
         </div>
 
         <textarea

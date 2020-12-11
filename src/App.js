@@ -46,7 +46,7 @@ class App extends React.Component {
       id: id
     };
     state.coments.push(newComent);
-    
+
     this.setState(state);
 
     state.form.valueInput = '';
@@ -86,20 +86,23 @@ class App extends React.Component {
   render() {
     return (
       <div className="wrapper fixed-container">
-        {
-          this.state.coments.map((coment) => {
-            return (
-              <Coment
-                key={coment.id}
-                name={coment.name}
-                text={coment.text}
-                date={coment.date}
-                time={coment.time}
-                delete={this.deleteComent.bind(this, coment.id)}
-              />
-            )
-          })
-        }
+
+        <div className="coment-wraper">
+          {
+            this.state.coments.map((coment) => {
+              return (
+                <Coment
+                  key={coment.id}
+                  name={coment.name}
+                  text={coment.text}
+                  date={coment.date}
+                  time={coment.time}
+                  delete={this.deleteComent.bind(this, coment.id)}
+                />
+              )
+            })
+          }
+        </div>
 
         <Form
           newValueName={this.newValueName}

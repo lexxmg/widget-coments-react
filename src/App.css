@@ -1,3 +1,7 @@
 .wrapper {
-  
+  padding: 10px;
+}
+
+.coment-wraper:last-child {
+  margin: 0;
 }

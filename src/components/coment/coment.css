@@ -52,4 +52,14 @@
 
   border: 1px solid #000;
   border-radius: 5px;
+
+  transition: background-color .15s, color .15s;
+}
+
+.coment__btn:hover {
+  background-color: black;
+
+  color: white;
+
+  transition: all .15s;
 }
