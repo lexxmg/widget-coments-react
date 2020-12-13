@@ -31,56 +31,62 @@ class App extends React.Component {
 
   addComent(e) {
     e.preventDefault();
-    const state = this.state;
+
     const id = (+new Date()).toString(16);
 
     const date = new Date();
     const time = date.getHours() + ':' + date.getMinutes();
     const toDay = date.getDate() + '-' + (date.getMonth() + 1);
 
-    const newComent = {
-      name: state.form.valueInput,
-      text: state.form.valueText,
-      date: toDay,
-      time: time,
-      id: id
-    };
-    state.coments.push(newComent);
+    this.setState(state => {
+      const newComent = {
+        name: state.form.valueInput,
+        text: state.form.valueText,
+        date: toDay,
+        time: time,
+        id: id
+      };
+      const coments = state.coments.concat(newComent);
 
-    this.setState(state);
-
-    state.form.valueInput = '';
-    state.form.valueText = '';
-
-    localStorage.setItem( 'state', JSON.stringify(this.state) );
-    //debugger;
+      return {
+        coments: coments,
+        form: {
+          valueInput: '',
+          valueText: ''
+        }
+      };
+    }, () => {
+      localStorage.setItem('state', JSON.stringify(this.state));
+    });
   }
 
   deleteComent(id) {
-    const state = this.state;
+    this.setState(state => {
+      const newArr = state.coments.filter((coment) => {
+        return coment.id !== id;
+      });
 
-    const newArr = state.coments.filter((coment) => {
-      return coment.id !== id;
+      return {coments: newArr};
+    }, () => {
+      localStorage.setItem('state', JSON.stringify(this.state));
+      if (this.state.coments.length === 0) {
+        localStorage.clear();
+      }
     });
-    state.coments = newArr;
-
-    this.setState(state);
-
-    localStorage.setItem('state', JSON.stringify(this.state));
   }
 
   newValueName(e) {
-    const state = this.state;
-    state.form.valueInput = e.target.value;
-
-    this.setState(state);
+    this.setState(state => {
+      state.form.valueInput = e.target.value;
+      return { state }
+    });
   }
 
   newValueText(e) {
-    const state = this.state;
-    state.form.valueText = e.target.value;
-
-    this.setState(state);
+    this.setState(state => {
+      state.form.valueText = e.target.value;
+      return { state }
+    });
   }
 
   render() {
