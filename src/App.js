@@ -95,15 +95,15 @@ class App extends React.Component {
 
         <div className="coment-wraper">
           {
-            this.state.coments.map((coment) => {
+            this.state.coments.map(( {id, name, text, date, time} ) => {
               return (
                 <Coment
-                  key={coment.id}
-                  name={coment.name}
-                  text={coment.text}
-                  date={coment.date}
-                  time={coment.time}
-                  delete={this.deleteComent.bind(this, coment.id)}
+                  key={id}
+                  name={name}
+                  text={text}
+                  date={date}
+                  time={time}
+                  del={this.deleteComent.bind(this, id)}
                 />
               )
             })
