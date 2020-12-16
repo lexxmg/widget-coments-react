@@ -20,16 +20,9 @@ export const deleteComentActionCreator = (id) => {
 }
 
 
-const initialState = {
-  coments: [],
-  form: {
-    valueInput: '',
-    valueText: 'text'
-  }
-}
 
-const formReducer =  (state = initialState, action) => {
-  console.log(state + ' ' + 'reducer');
+const formReducer =  (state, action) => {
+  //console.log(state + ' ' + 'reducer');
   switch (action.type) {
     case ADD_COMENT:
       const id = (+new Date()).toString(16);
@@ -50,22 +43,29 @@ const formReducer =  (state = initialState, action) => {
       state.form.valueInput = '';
       state.form.valueText = '';
 
+      localStorage.setItem('state', JSON.stringify(state));
+
       return state;
     case DELETE_COMENT:
       state.coments = state.coments.filter((coment) => {
         return (coment.id !== action.id);
       });
+      if (state.coments.length === 0) {
+        localStorage.clear();
+      }
       return state;
 
     case NEW_VALUE_NAME:
     console.log(action.value);
       state.form.valueInput = action.value;
       console.log(state);
+      //localStorage.setItem('state', JSON.stringify(state));
       return state;
 
     case NEW_VALUE_TEXT:
       state.form.valueText = action.value;
       console.log(state);
+      //localStorage.setItem('state', JSON.stringify(state));
       return state;
 
     default:

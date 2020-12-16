@@ -1,18 +1,24 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 import formReducer from './form-reducer';
 
 
 // const reducers = combineReducers({
 //   state: formReducer
 // });
+// JSON.parse(localStorage.getItem('state') );
+// localStorage.setItem('state', JSON.stringify(this.state));
 
-const initialState = {
-  coments: [],
-  form: {
-    valueInput: '',
-    valueText: 'text-2'
+let initialState = JSON.parse(localStorage.getItem('state') );
+if (!initialState) {
+  initialState = {
+    coments: [],
+    form: {
+      valueInput: '',
+      valueText: ''
+    }
   }
 }
+
 
 const store = createStore(formReducer, initialState);
 
