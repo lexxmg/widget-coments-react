@@ -9,7 +9,7 @@ const App = (props) => {
 
       <div className="coment-wraper">
         {
-          props.state.state.coments.map(( {id, name, text, date, time} ) => {
+          props.state.coments.map(( {id, name, text, date, time} ) => {
             return (
               <Coment
                 key={id}
@@ -26,8 +26,8 @@ const App = (props) => {
       </div>
 
       <Form
-        valueInput={props.state.state.form.valueInput}
-        valueText={props.state.state.form.valueText}
+        valueInput={props.state.form.valueInput}
+        valueText={props.state.form.valueText}
         dispatch={props.dispatch}
       />
     </div>

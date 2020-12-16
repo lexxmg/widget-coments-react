@@ -2,10 +2,18 @@ import { createStore, combineReducers } from 'redux';
 import formReducer from './form-reducer';
 
 
-const reducers = combineReducers({
-  state: formReducer
-});
+// const reducers = combineReducers({
+//   state: formReducer
+// });
 
-const store = createStore(reducers);
+const initialState = {
+  coments: [],
+  form: {
+    valueInput: '',
+    valueText: 'text-2'
+  }
+}
+
+const store = createStore(formReducer, initialState);
 
 export default store;
