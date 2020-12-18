@@ -22,7 +22,7 @@ export const deleteComentActionCreator = (id) => {
 
 
 const formReducer =  (state, action) => {
-  //console.log(state + ' ' + 'reducer');
+  //console.log(`${state} reducer`);
   switch (action.type) {
     case ADD_COMENT:
       const id = (+new Date()).toString(16);

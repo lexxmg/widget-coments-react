@@ -1,25 +1,7 @@
 import './form.css';
-import {
-         addComentActionCreator,
-         newValueNameActionCreator,
-         newValueTextActionCreator
-       } from '../../redux/form-reducer';
 
 
-const Form = ({ dispatch, valueInput, valueText}) => {
-  const addComent = (e) => {
-    e.preventDefault();
-    dispatch( addComentActionCreator() );
-  }
-
-  const newValueName = (e) => {
-    dispatch( newValueNameActionCreator(e.target.value) );
-  }
-
-  const newValueText = (e) => {
-    dispatch( newValueTextActionCreator(e.target.value) );
-  }
-
+const Form = ({ addComent, newValueName, valueInput, newValueText, valueText}) => {
   return (
     <div className="form-wrapper">
       <form className="form-wrapper__form" onSubmit={addComent}>

@@ -1,10 +1,6 @@
 import './coment.css';
-import { deleteComentActionCreator } from '../../redux/form-reducer';
 
-const Coment = ({ dispatch, text, name, time, date, id }) => {
-  const deliteComent = () => {
-    dispatch( deleteComentActionCreator(id) );
-  }
+const Coment = ({ deliteComent, text, name, time, date, id }) => {
   return (
     <div className="coment">
       <p className="coment__text">{text}</p>
@@ -18,7 +14,7 @@ const Coment = ({ dispatch, text, name, time, date, id }) => {
           <span className="coment__date">{date}</span>
         </time>
 
-        <button className="coment__btn" onClick={deliteComent}>удалить</button>
+        <button className="coment__btn" onClick={() => deliteComent(id)}>удалить</button>
       </div>
     </div>
   );

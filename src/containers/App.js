@@ -3,11 +3,12 @@ import './App.css';
 import Coment from '../components/coment/Coment';
 import Form from '../components/form/Form';
 import { connect } from 'react-redux';
-// import {
-//   addComentActionCreator,
-//   newValueNameActionCreator,
-//   newValueTextActionCreator
-// } from '../../redux/form-reducer';
+import {
+  addComentActionCreator,
+  newValueNameActionCreator,
+  newValueTextActionCreator,
+  deleteComentActionCreator
+} from '../redux/form-reducer';
 
 
 let App = (props) => {
@@ -25,7 +26,7 @@ let App = (props) => {
                 date={date}
                 time={time}
                 id={id}
-                dispatch={props.dispatch}
+                deliteComent={props.deliteComent}
               />
             )
           })
@@ -35,7 +36,9 @@ let App = (props) => {
       <Form
         valueInput={props.state.form.valueInput}
         valueText={props.state.form.valueText}
-        dispatch={props.dispatch}
+        addComent={props.addComent}
+        newValueName={props.newValueName}
+        newValueText={props.newValueText}
       />
     </div>
   );
@@ -46,7 +49,21 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {dispatch: dispatch}
+  return {
+    addComent: (e) => {
+      e.preventDefault();
+      dispatch( addComentActionCreator() );
+    },
+    newValueName: (e) => {
+      dispatch( newValueNameActionCreator(e.target.value) );
+    },
+    newValueText: (e) => {
+      dispatch( newValueTextActionCreator(e.target.value) );
+    },
+    deliteComent: (id) => {
+      dispatch( deleteComentActionCreator(id) );
+    }
+  }
 }
 
 App = connect(mapStateToProps, mapDispatchToProps)(App);
