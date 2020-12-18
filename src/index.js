@@ -5,6 +5,7 @@ import './index.css';
 import App from './containers/App';
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
 
 
 const state1 = store.getState();
@@ -14,10 +15,9 @@ console.log(state1);
 console.log(state1 === state2);
   ReactDOM.render(
     <React.StrictMode>
-      <App
-        state={ store.getState() }
-        dispatch={ store.dispatch.bind(store) }
-        />
+     <Provider store={store} >
+       <App />
+     </Provider>
     </React.StrictMode>,
     document.getElementById('root')
   );

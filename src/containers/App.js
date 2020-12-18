@@ -2,8 +2,15 @@ import React from 'react';
 import './App.css';
 import Coment from '../components/coment/Coment';
 import Form from '../components/form/Form';
+import { connect } from 'react-redux';
+// import {
+//   addComentActionCreator,
+//   newValueNameActionCreator,
+//   newValueTextActionCreator
+// } from '../../redux/form-reducer';
 
-const App = (props) => {
+
+let App = (props) => {
   return (
     <div className="wrapper fixed-container">
 
@@ -33,5 +40,15 @@ const App = (props) => {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {state: state}
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {dispatch: dispatch}
+}
+
+App = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default App;

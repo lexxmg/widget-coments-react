@@ -49,21 +49,24 @@ const formReducer =  (state, action) => {
 
       return newState;
     case DELETE_COMENT:
-      state.coments = state.coments.filter((coment) => {
+      const newStateDelete = {};
+      newStateDelete.form = {...state.form};
+      newStateDelete.coments = state.coments.filter((coment) => {
         return (coment.id !== action.id);
       });
       if (state.coments.length === 0) {
         localStorage.clear();
       }
-      return state;
+      
+      return newStateDelete;
 
     case NEW_VALUE_NAME:
       const newStateValueName = {};
       newStateValueName.coments = [...state.coments];
       newStateValueName.form = {...state.form};
       newStateValueName.form.valueInput = action.value;
-      //console.log(state);
-      //localStorage.setItem('state', JSON.stringify(state));
+      // console.log(state);
+      // localStorage.setItem('state', JSON.stringify(state));
       return newStateValueName;
 
     case NEW_VALUE_TEXT:
