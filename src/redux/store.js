@@ -8,16 +8,16 @@ import formReducer from './form-reducer';
 // JSON.parse(localStorage.getItem('state') );
 // localStorage.setItem('state', JSON.stringify(this.state));
 
-let initialState = JSON.parse(localStorage.getItem('state') );
-if (!initialState) {
-  initialState = {
+//let initialState = JSON.parse(localStorage.getItem('state') );
+// if (!initialState) {
+const  initialState = {
     coments: [],
     form: {
       valueInput: '',
       valueText: ''
     }
   }
-}
+//}
 
 
 const store = createStore(formReducer, initialState);

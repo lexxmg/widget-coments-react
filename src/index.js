@@ -6,8 +6,12 @@ import App from './containers/App';
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
 
-const render = () => {
-  console.log(store.getState());
+
+const state1 = store.getState();
+const state2 = store.getState();
+console.log(state1);
+
+console.log(state1 === state2);
   ReactDOM.render(
     <React.StrictMode>
       <App
@@ -17,10 +21,12 @@ const render = () => {
     </React.StrictMode>,
     document.getElementById('root')
   );
-}
 
-render();
-store.subscribe(render);
+store.subscribe( () => {
+  const state3 = store.getState();
+  console.log(state3);
+  console.log(state1 === state3);
+});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
