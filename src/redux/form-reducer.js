@@ -45,19 +45,23 @@ const formReducer =  (state, action) => {
       newState.form.valueInput = '';
       newState.form.valueText = '';
 
-      localStorage.setItem('state', JSON.stringify(state));
+      localStorage.setItem('state', JSON.stringify(newState));
 
       return newState;
+
     case DELETE_COMENT:
       const newStateDelete = {};
       newStateDelete.form = {...state.form};
       newStateDelete.coments = state.coments.filter((coment) => {
         return (coment.id !== action.id);
       });
-      if (state.coments.length === 0) {
+
+      localStorage.setItem('state', JSON.stringify(newStateDelete));
+
+      if (newStateDelete.coments.length === 0) {
         localStorage.clear();
       }
-      
+
       return newStateDelete;
 
     case NEW_VALUE_NAME:
@@ -66,7 +70,7 @@ const formReducer =  (state, action) => {
       newStateValueName.form = {...state.form};
       newStateValueName.form.valueInput = action.value;
       // console.log(state);
-      // localStorage.setItem('state', JSON.stringify(state));
+      //localStorage.setItem('state', JSON.stringify(newState));
       return newStateValueName;
 
     case NEW_VALUE_TEXT:
