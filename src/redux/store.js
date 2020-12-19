@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import formReducer from './form-reducer';
+import reducer from './reducers';
 
 
 // const reducers = combineReducers({
@@ -20,6 +20,6 @@ if (!initialState) {
 }
 
 
-const store = createStore(formReducer, initialState);
+const store = createStore(reducer, initialState);
 
 export default store;
