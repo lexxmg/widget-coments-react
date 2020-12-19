@@ -8,7 +8,7 @@ import {
   newValueNameActionCreator,
   newValueTextActionCreator,
   deleteComentActionCreator
-} from '../redux/form-reducer';
+} from '../redux/actions';
 
 
 let App = (props) => {
@@ -17,7 +17,7 @@ let App = (props) => {
 
       <div className="coment-wraper">
         {
-          props.state.coments.map(( {id, name, text, date, time} ) => {
+          props.coments.map(( {id, name, text, date, time} ) => {
             return (
               <Coment
                 key={id}
@@ -34,8 +34,8 @@ let App = (props) => {
       </div>
 
       <Form
-        valueInput={props.state.form.valueInput}
-        valueText={props.state.form.valueText}
+        valueInput={props.valueInput}
+        valueText={props.valueText}
         addComent={props.addComent}
         newValueName={props.newValueName}
         newValueText={props.newValueText}
@@ -45,7 +45,11 @@ let App = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  return {state: state}
+  return {
+    valueInput: state.form.valueInput,
+    valueText: state.form.valueText,
+    coments: state.coments
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

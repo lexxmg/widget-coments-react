@@ -1,24 +1,9 @@
-const ADD_COMENT = 'ADD-COMENT';
-const DELETE_COMENT = 'DELETE-COMENT';
-const NEW_VALUE_NAME = 'NEW-VALUE-NAME';
-const NEW_VALUE_TEXT = 'NEW-VALUE-TEXT';
-
-export const addComentActionCreator = () => {
-  return {type: ADD_COMENT};
-}
-
-export const newValueNameActionCreator = (value) => {
-  return {type: NEW_VALUE_NAME, value: value};
-}
-
-export const newValueTextActionCreator = (value) => {
-  return {type: NEW_VALUE_TEXT, value: value};
-}
-
-export const deleteComentActionCreator = (id) => {
-  return {type: DELETE_COMENT, id: id };
-}
-
+import {
+  ADD_COMENT,
+  DELETE_COMENT,
+  NEW_VALUE_NAME,
+  NEW_VALUE_TEXT
+} from './actions';
 
 
 const formReducer =  (state, action) => {
