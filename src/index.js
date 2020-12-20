@@ -24,6 +24,9 @@ store.subscribe( () => {
   console.log(state3);
   console.log(`state1 === state3 ${state1 === state3}`);
   localStorage.setItem('state', JSON.stringify( store.getState() ));
+  if ( store.getState().coments.length === 0) {
+    localStorage.clear();
+  }
 });
 
 // If you want to start measuring performance in your app, pass a function
