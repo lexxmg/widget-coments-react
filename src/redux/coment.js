@@ -3,8 +3,14 @@ import {
   DELETE_COMENT
 } from './actions';
 
+let initialState = JSON.parse(localStorage.getItem('state') );
+if (!initialState) {
+  initialState = [];
+} else {
+  initialState = initialState.coments;
+}
 
-const coment =  (state = [], action) => {
+const coment =  (state = initialState, action) => {
   let newState = [...state];
   switch (action.type) {
     case ADD_COMENT:
@@ -28,7 +34,7 @@ const coment =  (state = [], action) => {
       // newState.form.valueInput = '';
       // newState.form.valueText = '';
       //
-      // localStorage.setItem('state', JSON.stringify(newState));
+      //localStorage.setItem('state', JSON.stringify(newState));
 
       return newState;
 

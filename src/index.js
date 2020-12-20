@@ -23,6 +23,7 @@ store.subscribe( () => {
   const state3 = store.getState();
   console.log(state3);
   console.log(`state1 === state3 ${state1 === state3}`);
+  localStorage.setItem('state', JSON.stringify( store.getState() ));
 });
 
 // If you want to start measuring performance in your app, pass a function

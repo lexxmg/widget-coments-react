@@ -55,6 +55,8 @@ const mapDispatchToProps = (dispatch) => {
       const name = e.target.userName.value;
       const text = e.target.text.value;
       dispatch( addComentActionCreator(name, text) );
+      dispatch( newValueNameActionCreator('') );
+      dispatch( newValueTextActionCreator('') );
     },
     newValueName: (e) => {
       dispatch( newValueNameActionCreator(e.target.value) );
