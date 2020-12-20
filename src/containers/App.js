@@ -11,13 +11,21 @@ import {
 } from '../redux/actions';
 
 
-let App = (props) => {
+let App = ({
+            valueInput,
+            valueText,
+            addComent,
+            newValueName,
+            newValueText,
+            coments,
+            deliteComent
+          }) => {
   return (
     <div className="wrapper fixed-container">
 
       <div className="coment-wraper">
         {
-          props.state.coments.map(( {id, name, text, date, time} ) => {
+          coments.map(( {id, name, text, date, time} ) => {
             return (
               <Coment
                 key={id}
@@ -26,7 +34,7 @@ let App = (props) => {
                 date={date}
                 time={time}
                 id={id}
-                deliteComent={props.deliteComent}
+                deliteComent={deliteComent}
               />
             )
           })
@@ -34,18 +42,22 @@ let App = (props) => {
       </div>
 
       <Form
-        valueInput={props.state.form.valueInput}
-        valueText={props.state.form.valueText}
-        addComent={props.addComent}
-        newValueName={props.newValueName}
-        newValueText={props.newValueText}
+        addComent={addComent}
+        valueInput={valueInput}
+        valueText={valueText}
+        newValueName={newValueName}
+        newValueText={newValueText}
       />
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
-  return {state: state}
+  return {
+    valueInput: state.form.valueInput,
+    valueText: state.form.valueText,
+    coments: state.coments
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
