@@ -1,23 +1,11 @@
-const ADD_COMENT = 'ADD-COMENT';
-const NEW_VALUE_NAME = 'NEW-VALUE-NAME';
-const NEW_VALUE_TEXT = 'NEW-VALUE-TEXT';
-
-export const addComentActionCreator = () => {
-  return {type: ADD_COMENT};
-}
-
-export const newValueNameActionCreator = (value) => {
-  return {type: NEW_VALUE_NAME, value: value};
-}
-
-export const newValueTextActionCreator = (value) => {
-  return {type: NEW_VALUE_TEXT, value: value};
-}
+import {
+  ADD_COMENT,
+  DELETE_COMENT
+} from './actions';
 
 
-
-const formReducer =  (state, action) => {
-  //console.log(state + ' ' + 'reducer');
+const coment =  (state = [], action) => {
+  let newState = [...state];
   switch (action.type) {
     case ADD_COMENT:
       const id = (+new Date()).toString(16);
@@ -27,37 +15,39 @@ const formReducer =  (state, action) => {
       const toDay = date.getDate() + '-' + (date.getMonth() + 1);
 
       const newComent = {
-        name: state.form.valueInput,
-        text: state.form.valueText,
+        name: action.name,
+        text: action.text,
         date: toDay,
         time: time,
         id: id
       };
-      state.coments.push(newComent);
 
-      state.form.valueInput = '';
-      state.form.valueText = '';
+      newState = [...newState, newComent];
+      // newState.form = {...state.form};
+      //
+      // newState.form.valueInput = '';
+      // newState.form.valueText = '';
+      //
+      // localStorage.setItem('state', JSON.stringify(newState));
 
-      localStorage.setItem('state', JSON.stringify(state));
+      return newState;
 
-      return state;
-    
-    case NEW_VALUE_NAME:
-    console.log(action.value);
-      state.form.valueInput = action.value;
-      console.log(state);
-      //localStorage.setItem('state', JSON.stringify(state));
-      return state;
+    case DELETE_COMENT:
+      newState = newState.filter((coment) => {
+        return (coment.id !== action.id);
+      });
 
-    case NEW_VALUE_TEXT:
-      state.form.valueText = action.value;
-      console.log(state);
-      //localStorage.setItem('state', JSON.stringify(state));
-      return state;
+      //localStorage.setItem('state', JSON.stringify(newStateDelete));
+
+      // if (newStateDelete.coments.length === 0) {
+      //   localStorage.clear();
+      // }
+
+      return newState;
 
     default:
       return state;
   }
 }
 
-export default formReducer;
+export default coment;

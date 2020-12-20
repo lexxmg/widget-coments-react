@@ -1,31 +1,13 @@
 import './form.css';
-import {
-         addComentActionCreator,
-         newValueNameActionCreator,
-         newValueTextActionCreator
-       } from '../../redux/form-reducer';
 
-
-const Form = ({ dispatch, valueInput, valueText}) => {
-  const addComent = (e) => {
-    e.preventDefault();
-    dispatch( addComentActionCreator() );
-  }
-
-  const newValueName = (e) => {
-    dispatch( newValueNameActionCreator(e.target.value) );
-  }
-
-  const newValueText = (e) => {
-    dispatch( newValueTextActionCreator(e.target.value) );
-  }
-
+const Form = ({ addComent, newValueName, valueInput, newValueText, valueText}) => {
   return (
     <div className="form-wrapper">
       <form className="form-wrapper__form" onSubmit={addComent}>
         <div className="form-wrapper__input-wrapper">
           <input
             id="userName" type="text"
+            name="userName"
             className="form-wrapper__input"
             onChange={newValueName}
             value={valueInput}
@@ -37,7 +19,7 @@ const Form = ({ dispatch, valueInput, valueText}) => {
 
         <textarea
           className="form-wrapper_text"
-          cols="30" rows="10"
+          name="text"
           onChange={newValueText}
           value={valueText}>
         </textarea>
