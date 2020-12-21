@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 
 const Form = ({ addComent }) => {
   const [valueInput, setValueName] = useState('');
-  const [valueText, setValuetext] = useState('');
+  const [valueText, setValuetext] = useState('Написать коментарий');
   const submit = (e) => {
     e.preventDefault();
     addComent(valueInput, valueText);
     setValueName('');
-    setValuetext('');
+    setValuetext('Новый коментарий');
   };
 
   return (
@@ -31,6 +31,7 @@ const Form = ({ addComent }) => {
           className="form-wrapper_text"
           name="text"
           onChange={event => setValuetext(event.target.value)}
+          onFocus={() => setValuetext('')}
           value={valueText}>
         </textarea>
 
