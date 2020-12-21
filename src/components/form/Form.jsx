@@ -1,15 +1,25 @@
 import './form.css';
+import React, { useState } from 'react';
 
-const Form = ({ addComent, newValueName, valueInput, newValueText, valueText}) => {
+const Form = ({ addComent }) => {
+  const [valueInput, setValueName] = useState('');
+  const [valueText, setValuetext] = useState('');
+  const submit = (e) => {
+    e.preventDefault();
+    addComent(valueInput, valueText);
+    setValueName('');
+    setValuetext('');
+  };
+
   return (
     <div className="form-wrapper">
-      <form className="form-wrapper__form" onSubmit={addComent}>
+      <form className="form-wrapper__form" onSubmit={submit}>
         <div className="form-wrapper__input-wrapper">
           <input
             id="userName" type="text"
             name="userName"
             className="form-wrapper__input"
-            onChange={newValueName}
+            onChange={ (event) => setValueName(event.target.value) }
             value={valueInput}
             required/>
           <label htmlFor="userName" className="form-wrapper__label">Укажите имя</label>
@@ -20,7 +30,7 @@ const Form = ({ addComent, newValueName, valueInput, newValueText, valueText}) =
         <textarea
           className="form-wrapper_text"
           name="text"
-          onChange={newValueText}
+          onChange={event => setValuetext(event.target.value)}
           value={valueText}>
         </textarea>
 

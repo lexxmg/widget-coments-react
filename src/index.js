@@ -6,12 +6,6 @@ import App from './containers/App';
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
 
-
-const state1 = store.getState();
-const state2 = store.getState();
-console.log(state1);
-console.log(`state1 === state2 ${state1 === state2}`);
-
 ReactDOM.render(
   <React.StrictMode>
     <App store={store}/>
@@ -20,9 +14,6 @@ ReactDOM.render(
 );
 
 store.subscribe( () => {
-  const state3 = store.getState();
-  console.log(state3);
-  console.log(`state1 === state3 ${state1 === state3}`);
   localStorage.setItem('state', JSON.stringify( store.getState() ));
   if ( store.getState().coments.length === 0) {
     localStorage.clear();

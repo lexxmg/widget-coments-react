@@ -5,18 +5,12 @@ import Form from '../components/form/Form';
 import { connect } from 'react-redux';
 import {
   addComentActionCreator,
-  newValueNameActionCreator,
-  newValueTextActionCreator,
   deleteComentActionCreator
 } from '../redux/actions';
 
 
 let App = ({
-            valueInput,
-            valueText,
             addComent,
-            newValueName,
-            newValueText,
             coments,
             deliteComent
           }) => {
@@ -43,10 +37,6 @@ let App = ({
 
       <Form
         addComent={addComent}
-        valueInput={valueInput}
-        valueText={valueText}
-        newValueName={newValueName}
-        newValueText={newValueText}
       />
     </div>
   );
@@ -54,27 +44,14 @@ let App = ({
 
 const mapStateToProps = (state) => {
   return {
-    valueInput: state.form.valueInput,
-    valueText: state.form.valueText,
     coments: state.coments
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addComent: (e) => {
-      e.preventDefault();
-      const name = e.target.userName.value;
-      const text = e.target.text.value;
+    addComent: (name, text) => {
       dispatch( addComentActionCreator(name, text) );
-      dispatch( newValueNameActionCreator('') );
-      dispatch( newValueTextActionCreator('') );
-    },
-    newValueName: (e) => {
-      dispatch( newValueNameActionCreator(e.target.value) );
-    },
-    newValueText: (e) => {
-      dispatch( newValueTextActionCreator(e.target.value) );
     },
     deliteComent: (id) => {
       dispatch( deleteComentActionCreator(id) );
